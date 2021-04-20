@@ -43,7 +43,7 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('home') }}">Cabinet</a>
+                                <a class="dropdown-item" href="{{ route('cabinet') }}">Cabinet</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">
@@ -65,6 +65,7 @@
 <main class="app-content py-3">
     <div class="container">
         @yield('breadcrumbs')
+        @include('layouts.partials.flash')
         @yield('content')
     </div>
 </main>
