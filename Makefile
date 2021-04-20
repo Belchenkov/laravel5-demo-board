@@ -11,19 +11,22 @@ test:
 	docker-compose exec php-cli vendor/bin/phpunit
 
 assets-install:
-	docker-compose exec node yarn install
+	docker-compose exec node npm install
 
 assets-rebuild:
 	docker-compose exec node npm rebuild node-sass --force
 
 assets-dev:
-	docker-compose exec node yarn run dev
+	docker-compose exec node npm run dev
 
 assets-watch:
-	docker-compose exec node yarn run watch
+	docker-compose exec node npm run watch
 
 queue:
 	docker-compose exec php-cli php artisan queue:work
+
+migrate:
+	docker-compose exec php-cli php artisan migrate
 
 horizon:
 	docker-compose exec php-cli php artisan horizon
