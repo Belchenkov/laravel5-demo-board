@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Cabinet;
-
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
 
 class HomeController extends Controller
 {
@@ -23,6 +21,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('cabinet.home');
+        return view('home');
     }
 }
