@@ -12,7 +12,7 @@ class VerifyMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $user;
+    public $user;
 
     public function __construct(User $user)
     {
