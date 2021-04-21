@@ -28,6 +28,9 @@ queue:
 migrate:
 	docker-compose exec php-cli php artisan migrate
 
+refresh:
+	docker-compose exec php-cli php artisan migrate:refresh
+
 horizon:
 	docker-compose exec php-cli php artisan horizon
 
