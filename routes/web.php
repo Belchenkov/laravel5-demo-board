@@ -28,5 +28,6 @@ Route::prefix('admin')
     ->namespace('Admin')
     ->group(function () {
         Route::get('/', 'HomeController@index')->name('home');
+        Route::post('/verify', 'UsersController@verify')->name('users.verify');
         Route::resource('users', 'UsersController');
 });
