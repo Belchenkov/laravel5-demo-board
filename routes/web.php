@@ -23,7 +23,7 @@ Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('register.
 Route::get('/cabinet', 'Cabinet\HomeController@index')->name('cabinet');
 
 Route::prefix('admin')
-    //->middleware(['auth'])
+    ->middleware(['auth'])
     ->as('admin.')
     ->namespace('Admin')
     ->group(function () {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Entity\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -40,7 +41,7 @@ class LoginController extends Controller
             $this->clearLoginAttempts($request);
             $user = Auth::user();
 
-            if (!$user->status !== User::STATUS_ACTIVE) {
+            if ($user && $user->status !== User::STATUS_ACTIVE) {
                 Auth::logout();
                 return back()->with('error', 'You need to confirm your account. Please check your email.');
             }

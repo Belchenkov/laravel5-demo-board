@@ -25,11 +25,11 @@ assets-watch:
 queue:
 	docker-compose exec php-cli php artisan queue:work
 
-migrate:
+db-migrate:
 	docker-compose exec php-cli php artisan migrate
 
-refresh:
-	docker-compose exec php-cli php artisan migrate:refresh
+db-refresh:
+	docker-compose exec php-cli php artisan migrate:refresh --seed
 
 horizon:
 	docker-compose exec php-cli php artisan horizon
