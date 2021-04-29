@@ -29,9 +29,14 @@ class VerifyCommand extends Command
             return false;
         }
 
-        $this->service->verify($user->id);
+        try {
+            $this->service->verify($user->id);
+        } catch (\DomainException $e) {
+            $this->error($e->getMessage());
+            return false;
+        }
 
-        $this->info('Success');
+        $this->info('User is successfully verified!');
         return true;
     }
 }
