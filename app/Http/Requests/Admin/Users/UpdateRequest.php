@@ -17,7 +17,11 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|max:255|email|unique:users,id,' . $this->user->id
+            'email' => 'required|string|max:255|email|unique:users,id,' . $this->user->id,
+            'role' => ['required', 'string', Rule::in([
+                User::ROLE_USER,
+                User::ROLE_ADMIN,
+            ])]
         ];
     }
 }
