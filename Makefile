@@ -1,3 +1,5 @@
+init: docker-down docker-build docker-up
+
 docker-up:
 	docker-compose up -d
 
@@ -25,8 +27,14 @@ assets-watch:
 queue:
 	docker-compose exec php-cli php artisan queue:work
 
-migrate:
+db-migrate:
 	docker-compose exec php-cli php artisan migrate
+
+db-migrate-seed:
+	docker-compose exec php-cli php artisan migrate --seed
+
+db-refresh:
+	docker-compose exec php-cli php artisan migrate:refresh --seed
 
 horizon:
 	docker-compose exec php-cli php artisan horizon
