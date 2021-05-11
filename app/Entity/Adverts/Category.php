@@ -25,6 +25,16 @@ class Category extends Model
 
     protected $fillable = ['name', 'slug', 'parent_id'];
 
+    public function parentAttributes(): array
+    {
+        return $this->parent ? $this->parent->allAttributes() : [];
+    }
+
+    public function allAttributes(): array
+    {
+        return array_merge($this->parentAttributes(), $this->attributes()->orderBy('sort')->getModels());
+    }
+
     public function attributes(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Attribute::class, 'category_id', 'id');
