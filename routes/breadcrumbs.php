@@ -1,7 +1,9 @@
 <?php
 
+use App\Entity\Adverts\Attribute;
 use App\Entity\User;
 use App\Entity\Region;
+use App\Entity\Adverts\Category;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 
@@ -105,7 +107,23 @@ Breadcrumbs::register('admin.adverts.categories.show', function (Crumbs $crumbs,
     $crumbs->push($category->name, route('admin.adverts.categories.show', $category));
 });
 
-Breadcrumbs::register('admin.adverts.categories.edit', function (Crumbs $crumbs, Region $region) {
-    $crumbs->parent('admin.adverts.categories.show', $region);
-    $crumbs->push('Edit', route('admin.adverts.categories.edit', $region));
+Breadcrumbs::register('admin.adverts.categories.edit', function (Crumbs $crumbs, Category $category) {
+    $crumbs->parent('admin.adverts.categories.show', $category);
+    $crumbs->push('Edit', route('admin.adverts.categories.edit', $category));
+});
+
+// Advert Category Attributes
+Breadcrumbs::register('admin.adverts.categories.attributes.create', function (Crumbs $crumbs, Category $category) {
+    $crumbs->parent('admin.adverts.categories.show', $category);
+    $crumbs->push('Create', route('admin.adverts.categories.attributes.create', $category));
+});
+
+Breadcrumbs::register('admin.adverts.categories.attributes.show', function (Crumbs $crumbs, Category $category, Attribute $attribute) {
+    $crumbs->parent('admin.adverts.categories.show', $category);
+    $crumbs->push($attribute->name, route('admin.adverts.categories.attributes.show', [$category, $attribute]));
+});
+
+Breadcrumbs::register('admin.adverts.categories.attributes.edit', function (Crumbs $crumbs, Category $category, Attribute $attribute) {
+    $crumbs->parent('admin.adverts.categories.attributes.show', $category, $attribute);
+    $crumbs->push('Edit', route('admin.adverts.categories.attributes.edit', [$category, $attribute]));
 });

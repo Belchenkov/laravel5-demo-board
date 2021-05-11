@@ -29,6 +29,20 @@ Route::prefix('admin')
     ->group(function () {
         Route::get('/', 'HomeController@index')->name('home');
         Route::post('/users/{user}/verify', 'UsersController@verify')->name('users.verify');
+
         Route::resource('users', 'UsersController');
+
         Route::resource('regions', 'RegionController');
+
+        Route::group(['prefix' => 'adverts', 'as' => 'adverts.', 'namespace' => 'Adverts'], function () {
+            Route::resource('categories', 'CategoryController');
+
+            Route::group(['prefix' => 'categories/{category}', 'as' => 'categories.'], function () {
+                Route::post('/first', 'CategoryController@first')->name('first');
+                Route::post('/up', 'CategoryController@up')->name('up');
+                Route::post('/down', 'CategoryController@down')->name('down');
+                Route::post('/last', 'CategoryController@last')->name('last');
+                Route::resource('attributes', 'AttributeController')->except('index');
+            });
+        });
 });
