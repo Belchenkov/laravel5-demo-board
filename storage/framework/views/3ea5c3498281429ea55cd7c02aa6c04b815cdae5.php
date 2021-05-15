@@ -22,6 +22,14 @@
         </div>
 
         <div class="form-group">
+            <label for="phone" class="col-form-label">Phone</label>
+            <input id="phone" type="tel" class="form-control<?php echo e($errors->has('phone') ? ' is-invalid' : ''); ?>" name="phone" value="<?php echo e(old('phone', $user->phone)); ?>" required>
+            <?php if($errors->has('phone')): ?>
+                <span class="invalid-feedback"><strong><?php echo e($errors->first('phone')); ?></strong></span>
+            <?php endif; ?>
+        </div>
+
+        <div class="form-group">
             <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </form>
