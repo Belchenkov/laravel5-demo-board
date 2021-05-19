@@ -21,6 +21,11 @@ Breadcrumbs::register('register', function (Crumbs $crumbs) {
     $crumbs->push('Register', route('register'));
 });
 
+Breadcrumbs::register('login.phone', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push('Login', route('login.phone'));
+});
+
 Breadcrumbs::register('password.request', function (Crumbs $crumbs) {
     $crumbs->parent('login');
     $crumbs->push('Reset Password', route('password.request'));
