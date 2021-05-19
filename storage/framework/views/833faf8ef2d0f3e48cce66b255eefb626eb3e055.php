@@ -31,6 +31,20 @@
                 <?php endif; ?>
             </td>
         </tr>
+        <?php if($user->phone): ?>
+            <tr>
+                <th>Two Factor Auth</th><td>
+                    <form method="POST" action="<?php echo e(route('cabinet.profile.phone.auth')); ?>">
+                        <?php echo csrf_field(); ?>
+                        <?php if($user->isPhoneAuthEnabled()): ?>
+                            <button type="submit" class="btn btn-sm btn-success">On</button>
+                        <?php else: ?>
+                            <button type="submit" class="btn btn-sm btn-danger">Off</button>
+                        <?php endif; ?>
+                    </form>
+                </td>
+            </tr>
+        <?php endif; ?>
         </tbody>
     </table>
 <?php $__env->stopSection(); ?>
