@@ -6,6 +6,9 @@
             <a href="{{ route('admin.home') }}" class="nav-link active">Dashboard</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.adverts.adverts.index') }}">Adverts</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.regions.index') }}">Regions</a>
         </li>
         <li class="nav-item">
