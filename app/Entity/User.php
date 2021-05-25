@@ -52,6 +52,14 @@ class User extends Authenticatable
         'phone_auth' => 'boolean',
     ];
 
+    public static function rolesList(): array
+    {
+        return [
+            self::ROLE_USER => 'User',
+            self::ROLE_ADMIN => 'Admin',
+        ];
+    }
+
     /**
      * @param string $name
      * @param string $email
@@ -181,7 +189,7 @@ class User extends Authenticatable
 
     public function changeRole(string $role): void
     {
-        if (!\in_array($role, [self::ROLE_USER, self::ROLE_ADMIN], true)) {
+        if (!array_key_exists($role, self::rolesList())) {
             throw new \InvalidArgumentException('Undefined role ' . $role);
         }
 
