@@ -4,6 +4,9 @@
             <a href="<?php echo e(route('admin.home')); ?>" class="nav-link active">Dashboard</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('admin.adverts.adverts.index')); ?>">Adverts</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('admin.regions.index')); ?>">Regions</a>
         </li>
         <li class="nav-item">

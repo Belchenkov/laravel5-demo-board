@@ -17,7 +17,12 @@
                         <div class="col-md-3">
                             <ul class="list-unstyled">
                                 <?php $__currentLoopData = $chunk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $current): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><a href="<?php echo e(route('adverts.index', [$region, $current])); ?>"><?php echo e($current->name); ?></a></li>
+                                    <li>
+                                        <a href="<?php echo e(route('adverts.index', adverts_path($region, $current))); ?>">
+                                            <?php echo e($current->name); ?>
+
+                                        </a>
+                                    </li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </div>
@@ -43,7 +48,12 @@
                         <div class="col-md-3">
                             <ul class="list-unstyled">
                                 <?php $__currentLoopData = $chunk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $current): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><a href="<?php echo e(route('adverts.index', [$current, $category])); ?>"><?php echo e($current->name); ?></a></li>
+                                    <li>
+                                        <a href="<?php echo e(route('adverts.index', adverts_path($current, $category))); ?>">
+                                            <?php echo e($current->name); ?>
+
+                                        </a>
+                                    </li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </div>
