@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
+use App\Entity\Adverts\Advert\Advert;
 
 /**
  * Class User
@@ -52,6 +53,11 @@ class User extends Authenticatable
         'phone_verify_token_expire' => 'datetime',
         'phone_auth' => 'boolean',
     ];
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Advert::class, 'advert_favorites', 'user_id', 'advert_id');
+    }
 
     public static function rolesList(): array
     {
@@ -152,6 +158,23 @@ class User extends Authenticatable
         $this->saveOrFail();
     }
 
+    public function addToFavorites($id): void
+    {
+        if ($this->hasInFavorites($id)) {
+            throw new \DomainException('This advert is already added to favorites.');
+        }
+        $this->favorites()->attach($id);
+    }
+
+    public function removeFromFavorites($id): void
+    {
+        $this->favorites()->detach($id);
+    }
+
+    public function hasInFavorites($id): bool
+    {
+        return $this->favorites()->where('id', $id)->exists();
+    }
 
     /**
      * @return bool
