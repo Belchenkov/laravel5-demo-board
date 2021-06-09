@@ -95,6 +95,17 @@
 
             <hr/>
 
+            <table class="table table-bordered">
+                <tbody>
+                @foreach ($advert->category->allAttributes() as $attribute)
+                    <tr>
+                        <th>{{ $attribute->name }}</th>
+                        <td>{{ $advert->getValue($attribute->id) }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
             <p>Address: {{ $advert->address }}</p>
 
             <div style="margin: 20px 0; border: 1px solid #ddd">
