@@ -23,3 +23,24 @@ body {
     background-color: #b12a51;
     padding: 0.35rem 1rem;
 }
+
+.adverts-list {
+    .advert {
+        margin: 20px 0;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+
+        &:first-of-type {
+            margin-top: 0;
+        }
+    }
+}
+
+.search-bar {
+    background: #e9ecef;
+}
+
+.breadcrumb {
+    background: none;
+    padding: 0;
+}

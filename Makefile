@@ -15,6 +15,9 @@ test:
 assets-install:
 	docker-compose exec node npm install
 
+memory:
+	sudo sysctl -w vm.max_map_count=262144
+
 assets-rebuild:
 	docker-compose exec node npm rebuild node-sass --force
 

@@ -11,7 +11,8 @@
         "laravel/framework": "5.6.*",
         "kalnoy/nestedset": "^4.3",
         "guzzlehttp/guzzle": "^6.3",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "elasticsearch/elasticsearch": "^6.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
@@ -23,6 +24,9 @@
         "phpunit/phpunit": "^7.0"
     },
     "autoload": {
+        "files": [
+            "app/helpers.php"
+        ],
         "classmap": [
             "database/seeds",
             "database/factories"

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @property int $id
@@ -12,10 +13,22 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property Region $parent
  * @property Region[] $children
+ *
+ * @method Builder roots()
  */
 class Region extends Model
 {
     protected $fillable = ['name', 'slug', 'parent_id'];
+
+    public function getPath(): string
+    {
+        return ($this->parent ? $this->parent->getPath() . '/' : '') . $this->slug;
+    }
+
+    public function getAddress(): string
+    {
+        return ($this->parent ? $this->parent->getAddress() . ', ' : '') . $this->name;
+    }
 
     public function parent()
     {
@@ -25,5 +38,10 @@ class Region extends Model
     public function children()
     {
         return $this->hasMany(static::class, 'parent_id', 'id');
+    }
+
+    public function scopeRoots(Builder $query)
+    {
+        return $query->where('parent_id', null);
     }
 }
